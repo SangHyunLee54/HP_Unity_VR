@@ -3,8 +3,14 @@ using UnityEngine;
 
 namespace HP {
     public class HPControlPt : HPAppNoGeom3D {
+        // constants
+        public readonly static float MIN_DIST_PINCH = 0.0001f;
+
         // field
-        GameObject mCtrlSphere = null;
+        private GameObject mCtrlSphere = null;
+        public GameObject getCtrlSphere() {
+            return this.mCtrlSphere;
+        }
 
         private Vector3 mPos = Vector3.zero;
         public Vector3 getPos() {

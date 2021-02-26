@@ -23,6 +23,12 @@ namespace HP.Scenario {
 
             public override void handleLeftPinchStart() {
                 Debug.Log("Left Pinch Start");
+                HPApp app = (HPApp)this.mScenario.getApp();
+                if(HPCmdToSetCurCurve.execute(app,app.getLeftHand())) {
+                    XCmdToChangeScene.execute(app,
+                        HPEditCurveScenario.MoveControlPointLeftScene.
+                        getSingleton(), this);
+                }
             }
 
             public override void handleLeftPinchEnd() {
@@ -35,13 +41,23 @@ namespace HP.Scenario {
 
             public override void handleLeftGrabEnd() {
                 HPApp app = (HPApp)this.mScenario.getApp();
+                HPCmdToCreateBezierCurve.execute(app);
                 HPCmdToCreateControlPoint.execute(app, app.getLeftHand());
-                
+                XCmdToChangeScene.execute(app,
+                    HPEditCurveScenario.EditCurveReadyScene.
+                    getSingleton(), this);
+
                 Debug.Log("Left Grab End");
             }
 
             public override void handleRightPinchStart() {
                 Debug.Log("Right Pinch Start");
+                HPApp app = (HPApp)this.mScenario.getApp();
+                if (HPCmdToSetCurCurve.execute(app,app.getRightHand())) {
+                    XCmdToChangeScene.execute(app,
+                        HPEditCurveScenario.MoveControlPointRightScene.
+                        getSingleton(), this);
+                }
             }
 
             public override void handleRightPinchEnd() {
@@ -54,7 +70,11 @@ namespace HP.Scenario {
 
             public override void handleRightGrabEnd() {
                 HPApp app = (HPApp)this.mScenario.getApp();
+                HPCmdToCreateBezierCurve.execute(app);
                 HPCmdToCreateControlPoint.execute(app, app.getRightHand());
+                XCmdToChangeScene.execute(app,
+                    HPEditCurveScenario.EditCurveReadyScene.
+                    getSingleton(), this);
 
                 Debug.Log("Right Grab End");
             }
@@ -63,6 +83,8 @@ namespace HP.Scenario {
             }
 
             public override void getReady() {
+                HPApp app = (HPApp)this.mScenario.getApp();
+                app.getBezierCurveMgr().setCurCurve(null);
             }
 
             public override void wrapUp() {

@@ -194,12 +194,22 @@
      <Compile Include="Assets\Scripts\HP\AppObject\HPAppObject.cs" />
      <Compile Include="Assets\Scripts\HP\AppObject\HPAppObject3D.cs" />
      <Compile Include="Assets\Scripts\HP\AppObject\HPAppPolyline3D.cs" />
+     <Compile Include="Assets\Scripts\HP\AppObject\HPAppSurface3D.cs" />
+     <Compile Include="Assets\Scripts\HP\Cmd\HPCmdToAddBezierCurveToSurface.cs" />
+     <Compile Include="Assets\Scripts\HP\Cmd\HPCmdToCreateBezierCurve.cs" />
+     <Compile Include="Assets\Scripts\HP\Cmd\HPCmdToCreateBezierSurface.cs" />
      <Compile Include="Assets\Scripts\HP\Cmd\HPCmdToCreateControlPoint.cs" />
      <Compile Include="Assets\Scripts\HP\Cmd\HPCmdToDoSomething.cs" />
+     <Compile Include="Assets\Scripts\HP\Cmd\HPCmdToMoveControlPoint.cs" />
+     <Compile Include="Assets\Scripts\HP\Cmd\HPCmdToSetCurCurve.cs" />
      <Compile Include="Assets\Scripts\HP\Geom\HPGeom3D.cs" />
      <Compile Include="Assets\Scripts\HP\Geom\HPPolyline3D.cs" />
+     <Compile Include="Assets\Scripts\HP\Geom\HPSurface3D.cs" />
      <Compile Include="Assets\Scripts\HP\HPApp.cs" />
      <Compile Include="Assets\Scripts\HP\HPBezierCurve.cs" />
+     <Compile Include="Assets\Scripts\HP\HPBezierCurveMgr.cs" />
+     <Compile Include="Assets\Scripts\HP\HPBezierSurface.cs" />
+     <Compile Include="Assets\Scripts\HP\HPBezierSurfaceMgr.cs" />
      <Compile Include="Assets\Scripts\HP\HPConnectLine.cs" />
      <Compile Include="Assets\Scripts\HP\HPControlPt.cs" />
      <Compile Include="Assets\Scripts\HP\HPControlPtMgr.cs" />
@@ -212,6 +222,15 @@
      <Compile Include="Assets\Scripts\HP\HPUtil.cs" />
      <Compile Include="Assets\Scripts\HP\Scenario\HPDefaultScenario.ReadyScene.cs" />
      <Compile Include="Assets\Scripts\HP\Scenario\HPDefaultScenario.cs" />
+     <Compile Include="Assets\Scripts\HP\Scenario\HPEditCurveScenario.EditCurveReadyScene.cs" />
+     <Compile Include="Assets\Scripts\HP\Scenario\HPEditCurveScenario.MoveControlPointBothScene.cs" />
+     <Compile Include="Assets\Scripts\HP\Scenario\HPEditCurveScenario.MoveControlPointLeftScene.cs" />
+     <Compile Include="Assets\Scripts\HP\Scenario\HPEditCurveScenario.MoveControlPointRightScene.cs" />
+     <Compile Include="Assets\Scripts\HP\Scenario\HPEditCurveScenario.cs" />
+     <Compile Include="Assets\Scripts\HP\Scenario\HPMoveScenario.MoveControlPointBothScene.cs" />
+     <Compile Include="Assets\Scripts\HP\Scenario\HPMoveScenario.MoveControlPointLeftScene.cs" />
+     <Compile Include="Assets\Scripts\HP\Scenario\HPMoveScenario.MoveControlPointRightScene.cs" />
+     <Compile Include="Assets\Scripts\HP\Scenario\HPMoveScenario.cs" />
      <Compile Include="Assets\Scripts\X\XApp.cs" />
      <Compile Include="Assets\Scripts\X\XCmdToChangeScene.cs" />
      <Compile Include="Assets\Scripts\X\XExecutable.cs" />
@@ -795,8 +814,14 @@
     <Reference Include="Unity.VSCode.Editor">
         <HintPath>C:/Users/SketchLab/Desktop/sanghyun/Hand-Play/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Recorder.Editor">
+        <HintPath>C:/Users/SketchLab/Desktop/sanghyun/Hand-Play/Library/ScriptAssemblies/Unity.Recorder.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
         <HintPath>C:/Users/SketchLab/Desktop/sanghyun/Hand-Play/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Recorder">
+        <HintPath>C:/Users/SketchLab/Desktop/sanghyun/Hand-Play/Library/ScriptAssemblies/Unity.Recorder.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
         <HintPath>C:/Users/SketchLab/Desktop/sanghyun/Hand-Play/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
@@ -809,6 +834,9 @@
     </Reference>
     <Reference Include="Unity.Rider.Editor">
         <HintPath>C:/Users/SketchLab/Desktop/sanghyun/Hand-Play/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Recorder.Base">
+        <HintPath>C:/Users/SketchLab/Desktop/sanghyun/Hand-Play/Library/ScriptAssemblies/Unity.Recorder.Base.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
         <HintPath>C:/Users/SketchLab/Desktop/sanghyun/Hand-Play/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>

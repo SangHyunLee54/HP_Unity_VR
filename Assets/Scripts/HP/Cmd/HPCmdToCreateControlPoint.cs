@@ -23,8 +23,10 @@ namespace HP.Cmd
             HPApp app = (HPApp)this.mApp;
             HPControlPt cp = new HPControlPt(mHand.calcPalmPos());
             app.getControlPtMgr().getControlPts().Add(cp);
+            app.getBezierCurveMgr().getCurCurve().addControlPt(cp);
             //app.getConnectLine().update();
-            app.getBezierCurve().update();
+            app.getBezierCurveMgr().getCurCurve().update();
+            app.getBezierCurveMgr().updatePointColor();
             return true;
         }
 

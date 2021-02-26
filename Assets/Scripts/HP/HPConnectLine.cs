@@ -6,7 +6,7 @@ namespace HP {
     public class HPConnectLine : HPAppNoGeom3D{
         // constants
         private static readonly float WIDTH = 0.005f;
-        private static readonly Color COLOR = new Color(0.75f, 0.75f, 0.75f);
+        private static readonly Color COLOR = new Color(0.00f, 0.00f, 0.75f);
 
         // field
         HPApp mApp = null;
@@ -17,8 +17,18 @@ namespace HP {
         
         public void update() {
             List<Vector3> pts = new List<Vector3>();
-            List<HPControlPt> cPts = this.mApp.getControlPtMgr().
-                getControlPts();
+            
+            if (this.mApp.getBezierCurveMgr().getCurCurve() == null) {
+                if(this.getChildren().Count != 0) {
+                    HPAppObject child = this.getChildren()[0];
+                    this.removeChild(child);
+                    child.destroyGameObject();
+                }
+                return;
+            }
+
+            List<HPControlPt> cPts = this.mApp.getBezierCurveMgr().
+                getCurCurve().getContorlPts();
             
             if (cPts.Count == 0) {
                 return;

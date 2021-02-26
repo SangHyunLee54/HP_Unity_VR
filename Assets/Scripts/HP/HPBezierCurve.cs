@@ -10,16 +10,30 @@ namespace HP {
         private static readonly float MAX_DISTANCE_TO_RENDER = 0.000001f;
 
         // field
-        HPApp mApp = null;
+        private HPApp mApp = null;
+        private List<HPControlPt> mControlPts= null;
+        public List<HPControlPt> getContorlPts() {
+            return this.mControlPts;
+        }
+
+        private HPConnectLine mConnectLine = null;
+        public HPConnectLine getConnectLine() {
+            return this.mConnectLine;
+        }
 
         public HPBezierCurve(HPApp app) : base("Bezier Curve") {
             this.mApp = app;
+            this.mControlPts = new List<HPControlPt>();
+            
+        }
+
+        public void addControlPt(HPControlPt cPt) {
+            this.mControlPts.Add(cPt);
         }
         
         public void update() {
             List<Vector3> pts = new List<Vector3>();
-            List<HPControlPt> cPts = this.mApp.getControlPtMgr().
-                getControlPts();
+            List<HPControlPt> cPts = this.mControlPts;
             
             if (cPts.Count < 3) {
                 return;
@@ -88,12 +102,14 @@ namespace HP {
         }
 
         private List<Vector3> calcCurvePts(List<Vector3> pts) {
+
+            List<Vector3> result = new List<Vector3>();
             if (isEnoughToRender(pts)) {
+                result.Add(pts[0]);
+                result.Add(pts[pts.Count - 1]);
                 return pts;
             }
-            Debug.Log("not enough to Render");
             
-            List<Vector3> result = new List<Vector3>();
             List<List<Vector3>> middlePts = new List<List<Vector3>>();
             middlePts.Add(pts);
 

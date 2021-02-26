@@ -43,15 +43,22 @@ using X;
             return this.mControlPtMgr;
         }
 
-        private HPConnectLine mConnectLine = null;
-        public HPConnectLine getConnectLine() {
-            return this.mConnectLine;
+        private HPBezierCurveMgr mBezierCurveMgr = null;
+        public HPBezierCurveMgr getBezierCurveMgr() {
+            return this.mBezierCurveMgr;
         }
         
-        private HPBezierCurve mBezierCurve = null;
-        public HPBezierCurve getBezierCurve() {
-            return this.mBezierCurve;
+        private HPBezierSurfaceMgr mBezierSurfaceMgr = null;
+        public HPBezierSurfaceMgr getBezierSurfaceMgr() {
+            return this.mBezierSurfaceMgr;
         }
+
+        private HPConnectLine mConnectLine = null;
+        public HPConnectLine GetConnectLine() {
+            return this.mConnectLine;
+        }
+
+ 
 
         void Start() {
             this.mEye = new HPEye(this.mEyePrefab);
@@ -60,18 +67,37 @@ using X;
             this.mHandEventSource = new HPHandEventSource(this);
             this.mEventListener = new HPEventListener(this);
             this.mHandEventSource.setListener(this.mEventListener);
+            
+            
+            this.mControlPtMgr = new HPControlPtMgr();
+            this.mBezierCurveMgr = new HPBezierCurveMgr(this);
+            this.mBezierSurfaceMgr = new HPBezierSurfaceMgr(this);
+            
+            
             this.mScenarioMgr = new HPScenarioMgr(this);
             this.mLogMgr = new XLogMgr();
-            this.mLogMgr.setPrintOn(true);
-            this.mControlPtMgr = new HPControlPtMgr();
+            this.mLogMgr.setPrintOn(false);
+
 
             this.mConnectLine = new HPConnectLine(this);
-            this.mBezierCurve = new HPBezierCurve(this);
-            
+
+            // bezier surface test
+            // List<List<HPControlPt>> cpts = new List<List<HPControlPt>>();
+            // for (int i = 0; i < 5; i++) {
+            //     List<HPControlPt> cpt = new List<HPControlPt>();
+            //     for (int j = 0; j < 5; j++) {
+            //         Vector3 vec = new Vector3((float)i / 10.0f, (float)j / 10.0f, (float)i / (((float)j + 1.0f) * 5.0f));
+            //         HPControlPt controlPt = new HPControlPt(vec);
+            //         cpt.Add(controlPt);
+            //     }
+            //     cpts.Add(cpt);
+            // }
+            // this.mSurface = new HPBezierSurface(this);
+            // this.mSurface.update();
         }
         void Update() {
-            this.mHandEventSource.update();        
-            //this.mConnectLine.update();    
+            this.mHandEventSource.update();
+            this.mConnectLine.update();
         }
     }
 }
