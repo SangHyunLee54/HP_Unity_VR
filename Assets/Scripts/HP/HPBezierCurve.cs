@@ -15,6 +15,9 @@ namespace HP {
         public List<HPControlPt> getContorlPts() {
             return this.mControlPts;
         }
+        public int getDegree() {
+            return this.mControlPts.Count - 1;
+        }
 
         private HPConnectLine mConnectLine = null;
         public HPConnectLine getConnectLine() {
@@ -140,6 +143,28 @@ namespace HP {
             result.AddRange(secondControlPts);
 
             return result;
+        }
+
+        // degree elevation
+        public void degreeElevate() {
+            List<HPControlPt> elevatedList = new List<HPControlPt>();
+            elevatedList.Add(this.mControlPts[0]);
+            int n = this.mControlPts.Count - 1;
+            for (int i = 1; i <= n; i++) {
+                Vector3 newPos = Vector3.zero;
+                newPos += this.mControlPts[i - 1].getPos() * (i / (n + 1));
+                newPos += this.mControlPts[i].getPos() * (1 - (i / (n + 1)));
+                HPControlPt newCPt = new HPControlPt(newPos);
+                elevatedList.Add(newCPt);
+            }
+            elevatedList.Add(mControlPts[n]);
+            for (int i = 0; i < this.mControlPts.Count; i++) {
+                this.mControlPts[i].destroyGameObject();
+                this.mApp.getControlPtMgr().getControlPts().
+                    Remove(this.mControlPts[i]);
+            }
+            this.mControlPts = elevatedList;
+            this.update();
         }
     }
 }

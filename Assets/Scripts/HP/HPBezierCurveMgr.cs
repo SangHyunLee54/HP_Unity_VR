@@ -32,6 +32,10 @@ namespace HP {
             this.mCurves.Add(curve);
         }
 
+        public void removeCurve(HPBezierCurve curve) {
+            this.mCurves.Remove(curve);
+        }
+
         // get BezierCurve has input ControlPt.
         public HPBezierCurve getCurve(HPControlPt cp) {
             foreach(HPBezierCurve bc in this.mCurves) {
@@ -44,11 +48,10 @@ namespace HP {
 
         // show current bezier curve with blue point
         public void updatePointColor() {
-            foreach(HPBezierCurve bc in this.mCurves) {
-                foreach(HPControlPt cpt in bc.getContorlPts()) {
-                    cpt.getCtrlSphere().GetComponent<MeshRenderer>().
-                    material.color = Color.red;
-                }
+            HPApp app = (HPApp)this.mApp;
+            foreach(HPControlPt cpt in app.getControlPtMgr().getControlPts()) {
+                cpt.getCtrlSphere().GetComponent<MeshRenderer>().
+                material.color = Color.red;
             }
             if (this.getCurCurve() != null) {
                 foreach(HPControlPt cpt in this.getCurCurve().getContorlPts()) {

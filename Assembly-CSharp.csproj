@@ -217,6 +217,7 @@
      <Compile Include="Assets\Scripts\HP\HPEye.cs" />
      <Compile Include="Assets\Scripts\HP\HPHand.cs" />
      <Compile Include="Assets\Scripts\HP\HPHandEventSource.cs" />
+     <Compile Include="Assets\Scripts\HP\HPPen.cs" />
      <Compile Include="Assets\Scripts\HP\HPScenarioMgr.cs" />
      <Compile Include="Assets\Scripts\HP\HPScene.cs" />
      <Compile Include="Assets\Scripts\HP\HPUtil.cs" />
@@ -227,6 +228,10 @@
      <Compile Include="Assets\Scripts\HP\Scenario\HPEditCurveScenario.MoveControlPointLeftScene.cs" />
      <Compile Include="Assets\Scripts\HP\Scenario\HPEditCurveScenario.MoveControlPointRightScene.cs" />
      <Compile Include="Assets\Scripts\HP\Scenario\HPEditCurveScenario.cs" />
+     <Compile Include="Assets\Scripts\HP\Scenario\HPEditSurfaceScenario.EditSurfaceReadyScene.cs" />
+     <Compile Include="Assets\Scripts\HP\Scenario\HPEditSurfaceScenario.MoveControlPointLeftScene.cs" />
+     <Compile Include="Assets\Scripts\HP\Scenario\HPEditSurfaceScenario.MoveControlPointRightScene.cs" />
+     <Compile Include="Assets\Scripts\HP\Scenario\HPEditSurfaceScenario.cs" />
      <Compile Include="Assets\Scripts\HP\Scenario\HPMoveScenario.MoveControlPointBothScene.cs" />
      <Compile Include="Assets\Scripts\HP\Scenario\HPMoveScenario.MoveControlPointLeftScene.cs" />
      <Compile Include="Assets\Scripts\HP\Scenario\HPMoveScenario.MoveControlPointRightScene.cs" />
@@ -241,6 +246,7 @@
      <Compile Include="Assets\Scripts\X\XScene.cs" />
      <None Include="Assets\Oculus\SampleFramework\Usage\HandsTrainExample\Shaders\XingLightShader.shader" />
      <None Include="Assets\Oculus\Avatar\Resources\Materials\AvatarMaterialStateShader.cginc" />
+     <None Include="Assets\Shader\BezierSurfaceShader.shader" />
      <None Include="Assets\Oculus\SampleFramework\Usage\HandsTrainExample\Shaders\ButtonGlow.shader" />
      <None Include="Assets\Oculus\SampleFramework\Usage\DistanceGrab\Materials\CrosshairZCheat.shader" />
      <None Include="Assets\Oculus\Avatar\Resources\Materials\Version1.5\Avatar_Mobile_Loader.shader" />

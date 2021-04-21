@@ -5,7 +5,7 @@ using UnityEngine;
 namespace HP.AppObject {
     public class HPAppSurface3D : HPAppGeom3D {
         //fields
-        private Color mColor = Color.red; //easily noticeable
+        private Color mColor = new Color(0.5f, 0.5f, 0.5f, 0.8f);
         public void setColor(Color color) {
             this.mColor = color;
             this.refreshRenderer();
@@ -37,6 +37,8 @@ namespace HP.AppObject {
             mf.mesh = surface.calcMesh();
             MeshRenderer mr = this.mGameObject.GetComponent<MeshRenderer>();
             mr.material = new Material(Shader.Find("UI/Unlit/Transparent"));
+            // mr.material = new Material(Shader. 
+            //    Find("Custom/BezierSurfaceShader"));
             mr.material.color = this.mColor;
         }
 

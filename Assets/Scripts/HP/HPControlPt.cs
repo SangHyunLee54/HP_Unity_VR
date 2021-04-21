@@ -4,7 +4,7 @@ using UnityEngine;
 namespace HP {
     public class HPControlPt : HPAppNoGeom3D {
         // constants
-        public readonly static float MIN_DIST_PINCH = 0.0001f;
+        public readonly static float MIN_DIST_PINCH = 0.0004f;
 
         // field
         private GameObject mCtrlSphere = null;

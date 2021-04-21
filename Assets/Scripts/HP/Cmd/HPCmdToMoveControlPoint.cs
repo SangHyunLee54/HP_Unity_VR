@@ -26,6 +26,10 @@ namespace HP.Cmd
             HPApp app = (HPApp)this.mApp;
             this.mPt.move(this.mHand.calcPinchPos());
             app.getBezierCurveMgr().getCurCurve().update();
+            foreach(HPBezierSurface bs in
+                app.getBezierSurfaceMgr().getSurfaces()) {
+                bs.update();
+            }
             return true;
         }
 

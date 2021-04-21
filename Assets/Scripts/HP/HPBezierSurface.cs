@@ -17,6 +17,10 @@ namespace HP {
             return this.mControlPts;
         }
 
+        public int getDegree() {
+            return this.mControlPts[0].Count;
+        }
+
         private Color mColor = Color.red;
         public void setColor(Color color) {
             this.mColor = color;
@@ -32,7 +36,19 @@ namespace HP {
 
         // add control points from curves
         public void addCurve(HPBezierCurve bc) {
+            if (this.mControlPts.Count != 0 &&
+                this.getDegree() < bc.getDegree()) {
+                for (int i = 0; i < bc.getDegree() - this.getDegree(); i++) {
+                    this.degreeElevate();
+                }
+            } else if (this.mControlPts.Count != 0 &&
+                this.getDegree() > bc.getDegree()) {
+                for (int i = 0; i < this.getDegree() - bc.getDegree(); i++) {
+                    bc.degreeElevate();
+                }
+            }
             this.mControlPts.Add(bc.getContorlPts());
+            this.mApp.getBezierCurveMgr().removeCurve(bc);
             this.update();
         }
 
@@ -41,6 +57,11 @@ namespace HP {
                 this.calcPts(HPBezierSurface.RENDER_SECTION_NUM),
                 this.calcTriangles(HPBezierSurface.RENDER_SECTION_NUM),
                 HPBezierSurface.COLOR);
+            if (this.getChildren().Count != 0) {
+                HPAppObject child = this.getChildren()[0];
+                this.removeChild(child);
+                child.destroyGameObject();
+            }
             addChild(surface);
         }
 
@@ -156,6 +177,38 @@ namespace HP {
                 }
             }
             return true;
+        }
+
+        // degree elevation
+        public void degreeElevate() {
+            List<List<HPControlPt>> elevatedList = 
+                new List<List<HPControlPt>>();
+            int n = this.mControlPts[0].Count - 1;
+            for (int j = 0; j < this.mControlPts.Count; j++) {
+                List<HPControlPt> elevatedRow = new List<HPControlPt>();
+                elevatedRow.Add(this.mControlPts[j][0]);
+                for (int i = 1; i <= n; i++) {
+                    Vector3 newPos = Vector3.zero;
+                    newPos += this.mControlPts[j][i - 1].
+                        getPos() * (i / (n + 1));
+                    newPos += this.mControlPts[j][i].
+                        getPos() * (1 - (i / (n + 1)));
+                    HPControlPt newCPt = new HPControlPt(newPos);
+                    elevatedRow.Add(newCPt);
+                }
+                elevatedRow.Add(mControlPts[j][n]);
+            }
+
+            for (int i = 0; i < this.mControlPts.Count; i++) {
+                for (int j = 0; j < this.mControlPts[i].Count; j++)
+                {
+                    this.mControlPts[i][j].destroyGameObject();
+                    this.mApp.getControlPtMgr().getControlPts().
+                        Remove(this.mControlPts[i][j]);
+                }
+            }
+            this.mControlPts = elevatedList;
+            this.update();
         }
     }
 }

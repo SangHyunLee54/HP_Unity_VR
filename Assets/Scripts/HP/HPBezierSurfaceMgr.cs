@@ -46,13 +46,10 @@ namespace HP {
 
         // show current bezier curve with blue point
         public void updatePointColor() {
-            foreach(HPBezierSurface bs in this.mSurfaces) {
-                foreach(List<HPControlPt> cpts in bs.getContorlPts()) {
-                    foreach(HPControlPt cpt in cpts) {
-                        cpt.getCtrlSphere().GetComponent<MeshRenderer>().
-                        material.color = Color.red;
-                    }
-                }
+            HPApp app = (HPApp)this.mApp;
+            foreach(HPControlPt cpt in app.getControlPtMgr().getControlPts()) {
+                cpt.getCtrlSphere().GetComponent<MeshRenderer>().
+                material.color = Color.red;
             }
             if (this.getCurSurface() != null) {
                 foreach(List<HPControlPt> cpts in this.getCurSurface().
