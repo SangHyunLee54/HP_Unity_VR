@@ -53,9 +53,19 @@ using X;
             return this.mBezierSurfaceMgr;
         }
 
+        private HPPenPathMgr mPenPathMgr = null;
+        public HPPenPathMgr getPenPathMgr() {
+            return this.mPenPathMgr;
+        }
+
         private HPConnectLine mConnectLine = null;
         public HPConnectLine GetConnectLine() {
             return this.mConnectLine;
+        }
+
+        private HPPenHandleLine mPenHandleLine = null;
+        public HPPenHandleLine getPenHandleLine() {
+            return this.mPenHandleLine;
         }
 
  
@@ -72,32 +82,21 @@ using X;
             this.mControlPtMgr = new HPControlPtMgr();
             this.mBezierCurveMgr = new HPBezierCurveMgr(this);
             this.mBezierSurfaceMgr = new HPBezierSurfaceMgr(this);
+            this.mPenPathMgr = new HPPenPathMgr(this);
             
             
             this.mScenarioMgr = new HPScenarioMgr(this);
             this.mLogMgr = new XLogMgr();
-            this.mLogMgr.setPrintOn(false);
+            this.mLogMgr.setPrintOn(true);
 
 
             this.mConnectLine = new HPConnectLine(this);
-
-            // bezier surface test
-            // List<List<HPControlPt>> cpts = new List<List<HPControlPt>>();
-            // for (int i = 0; i < 5; i++) {
-            //     List<HPControlPt> cpt = new List<HPControlPt>();
-            //     for (int j = 0; j < 5; j++) {
-            //         Vector3 vec = new Vector3((float)i / 10.0f, (float)j / 10.0f, (float)i / (((float)j + 1.0f) * 5.0f));
-            //         HPControlPt controlPt = new HPControlPt(vec);
-            //         cpt.Add(controlPt);
-            //     }
-            //     cpts.Add(cpt);
-            // }
-            // this.mSurface = new HPBezierSurface(this);
-            // this.mSurface.update();
+            this.mPenHandleLine = new HPPenHandleLine(this);
         }
         void Update() {
             this.mHandEventSource.update();
-            this.mConnectLine.update();
+            //this.mConnectLine.update();
+            //this.mPenHandleLine.update();
         }
     }
 }

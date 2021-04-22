@@ -12,6 +12,7 @@ namespace HP {
             HPApp app = (HPApp) this.mApp;
             this.addScenario(HPDefaultScenario.createSingleton(app));
             this.addScenario(HPEditCurveScenario.createSingleton(app));
+            this.addScenario(HPEditPenPathScenario.createSingleton(app));
         }
 
         protected override void setInitCurScene() {

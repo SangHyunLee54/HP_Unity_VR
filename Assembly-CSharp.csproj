@@ -196,11 +196,14 @@
      <Compile Include="Assets\Scripts\HP\AppObject\HPAppPolyline3D.cs" />
      <Compile Include="Assets\Scripts\HP\AppObject\HPAppSurface3D.cs" />
      <Compile Include="Assets\Scripts\HP\Cmd\HPCmdToAddBezierCurveToSurface.cs" />
+     <Compile Include="Assets\Scripts\HP\Cmd\HPCmdToAddPenPath.cs" />
      <Compile Include="Assets\Scripts\HP\Cmd\HPCmdToCreateBezierCurve.cs" />
      <Compile Include="Assets\Scripts\HP\Cmd\HPCmdToCreateBezierSurface.cs" />
      <Compile Include="Assets\Scripts\HP\Cmd\HPCmdToCreateControlPoint.cs" />
+     <Compile Include="Assets\Scripts\HP\Cmd\HPCmdToCreatePenPath.cs" />
      <Compile Include="Assets\Scripts\HP\Cmd\HPCmdToDoSomething.cs" />
      <Compile Include="Assets\Scripts\HP\Cmd\HPCmdToMoveControlPoint.cs" />
+     <Compile Include="Assets\Scripts\HP\Cmd\HPCmdToMovePenPoint.cs" />
      <Compile Include="Assets\Scripts\HP\Cmd\HPCmdToSetCurCurve.cs" />
      <Compile Include="Assets\Scripts\HP\Geom\HPGeom3D.cs" />
      <Compile Include="Assets\Scripts\HP\Geom\HPPolyline3D.cs" />
@@ -217,7 +220,9 @@
      <Compile Include="Assets\Scripts\HP\HPEye.cs" />
      <Compile Include="Assets\Scripts\HP\HPHand.cs" />
      <Compile Include="Assets\Scripts\HP\HPHandEventSource.cs" />
-     <Compile Include="Assets\Scripts\HP\HPPen.cs" />
+     <Compile Include="Assets\Scripts\HP\HPPenHandleLine.cs" />
+     <Compile Include="Assets\Scripts\HP\HPPenPath.cs" />
+     <Compile Include="Assets\Scripts\HP\HPPenPathMgr.cs" />
      <Compile Include="Assets\Scripts\HP\HPScenarioMgr.cs" />
      <Compile Include="Assets\Scripts\HP\HPScene.cs" />
      <Compile Include="Assets\Scripts\HP\HPUtil.cs" />
@@ -228,6 +233,11 @@
      <Compile Include="Assets\Scripts\HP\Scenario\HPEditCurveScenario.MoveControlPointLeftScene.cs" />
      <Compile Include="Assets\Scripts\HP\Scenario\HPEditCurveScenario.MoveControlPointRightScene.cs" />
      <Compile Include="Assets\Scripts\HP\Scenario\HPEditCurveScenario.cs" />
+     <Compile Include="Assets\Scripts\HP\Scenario\HPEditPenPathScenario.AddPenPathRightScene.cs" />
+     <Compile Include="Assets\Scripts\HP\Scenario\HPEditPenPathScenario.CreatePenPathRightScene.cs" />
+     <Compile Include="Assets\Scripts\HP\Scenario\HPEditPenPathScenario.EditPenPathReadyScene.cs" />
+     <Compile Include="Assets\Scripts\HP\Scenario\HPEditPenPathScenario.MoveControlPointRightScene.cs" />
+     <Compile Include="Assets\Scripts\HP\Scenario\HPEditPenPathScenario.cs" />
      <Compile Include="Assets\Scripts\HP\Scenario\HPEditSurfaceScenario.EditSurfaceReadyScene.cs" />
      <Compile Include="Assets\Scripts\HP\Scenario\HPEditSurfaceScenario.MoveControlPointLeftScene.cs" />
      <Compile Include="Assets\Scripts\HP\Scenario\HPEditSurfaceScenario.MoveControlPointRightScene.cs" />

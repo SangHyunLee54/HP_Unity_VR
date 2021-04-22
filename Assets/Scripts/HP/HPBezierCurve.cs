@@ -38,7 +38,7 @@ namespace HP {
             List<Vector3> pts = new List<Vector3>();
             List<HPControlPt> cPts = this.mControlPts;
             
-            if (cPts.Count < 3) {
+            if (cPts.Count < 2) {
                 return;
             }
 

@@ -65,6 +65,15 @@ namespace HP.Scenario {
             }
 
             public override void handleRightGrabStart() {
+                HPApp app = (HPApp)this.mScenario.getApp();
+                HPEditPenPathScenario scenario = 
+                    HPEditPenPathScenario.getSingleton();
+                Vector3 pt = app.getRightHand().calcPalmPos();
+                scenario.setStartPt(pt);
+                
+                XCmdToChangeScene.execute(app,
+                    HPEditPenPathScenario.CreatePenPathRightScene.
+                    getSingleton(), this);
                 Debug.Log("Right Grab Start");
             }
 
@@ -75,7 +84,6 @@ namespace HP.Scenario {
                 XCmdToChangeScene.execute(app,
                     HPEditCurveScenario.EditCurveReadyScene.
                     getSingleton(), this);
-
                 Debug.Log("Right Grab End");
             }
 
